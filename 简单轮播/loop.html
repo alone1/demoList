@@ -1,0 +1,87 @@
+<!DOCTYPE>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<style type="text/css">
+			.loop {
+				position: relative;
+				width: 400px;
+				height: 400px;
+				margin: 200px auto;
+				overflow: hidden;
+			}
+			.looplist {
+				position: absolute;
+				top: 0;
+				left: 0;
+				margin: 0;
+				padding: 0;
+			}
+			.looplist::after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			.looplist li {
+				float: left;
+			}
+			.looplist li img {
+				width: 100%;
+			}
+			#item {
+				position: absolute;
+				right: 20px;
+				bottom: 20px;
+				margin: 0;
+				padding: 0;
+				z-index: 9;
+			}
+			#item::after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			#item li {
+				width: 15px;
+				height: 15px;
+				float: left;
+				margin-right: 5px;
+				border: 1px solid #000;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="loop">
+			<ul class="looplist">
+				<li><img src="1.jpg"></li>
+				<li><img src="1.jpg"></li>
+			</ul>
+			<ul id="item"></ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function() {
+			console.log('yes');
+			$('.looplist').append($('.looplist').children('li').eq(0).clone());
+			loop('.loop');
+		})
+		function loop(id){
+			var _main = $(id).children('ul').eq(0),
+				_child = _main.children('li'),
+				_len = $(id).width();
+				_left = parseInt(_main.css('left'));
+			_main.width((_child.length)*_len);
+			_child.width(_len);
+			console.log(_left ==  -(_child.length-1)*_len);
+			if (_left ==  -(_child.length-1)*_len) {
+				_main.css('left', 0);
+				loop(id);
+			}else {
+				_main.stop().animate({'left':(-_len+_left)+'px'}, 1000);
+				setTimeout(function(){
+					loop(id);
+				},3000);
+			};
+		}
+	</script>
+</html>
