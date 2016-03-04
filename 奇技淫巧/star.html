@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="Font-Awesome-3.2.1/css/font-awesome.css">
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.easing.1.3.js"></script>
+	<title>打印菱形星星</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function draw(n){
+		for (var i = 0; i <= 2*n; i++) {
+			for (var j = 0; j <= 2*n;j++) {
+				if (i < n) {
+					if (j==n-i || j==n+i) {
+						document.write('*');
+					}else {
+						document.write('&nbsp;');
+					};
+				}else {
+					if (j==i-n || j==3*n-i) {
+						document.write('*');
+					}else {
+						document.write('&nbsp;');
+					};
+				};
+			};
+			document.write('<br>');
+		};
+		
+	}
+	drwa(10);
+</script>
+</html>
