@@ -1,0 +1,38 @@
+<!DOCTYPE>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<style type="text/css">
+			body {
+				background-color: rgba(100,145,250,0.3);				
+			}
+			canvas {
+				margin-left: 20px;
+				margin-right: 0;
+				margin-bottom: 20px;
+				border: thin inset #aaa;
+				cursor: crosshair;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="725" height="440">
+			Canvas not supported
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas'),
+			context = canvas.getContext('2d');
+
+		context.lineJoin = 'round';
+		context.lineWidth = 30;
+
+		context.font = '24px Arial';
+		context.fillText('click anywhere to erase',175 ,40);
+		context.strokeRect(75,100,200,200);
+		context.fillRect(325,100,200,200);
+
+		context.canvas.onmousedown = function(e) {
+			context.clearRect(325,100,200,200);
+		}
+	</script>
+</html>
