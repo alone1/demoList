@@ -1,0 +1,43 @@
+<!DOCTYPE>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<style type="text/css">
+			canvas {
+				margin-left: 20px;
+				margin-right: 0;
+				margin-bottom: 20px;
+				border: 1px solid #aaa;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="725" height="440">
+			Canvas not supported
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas'),
+			iconContext = canvas.getContext('2d'),
+			SHADOW_COLOR = 'rgba(0,0,0,0.7)';
+
+		function setIconShadow () {
+			iconContext.shadowColor = SHADOW_COLOR;
+			iconContext.shadowOffsetX = -5;
+			iconContext.shadowOffsetY = -5;
+			iconContext.shadowBlur = 10;
+			iconContext.strokeStyle = '#ccc';
+			iconContext.strokeRect(100,110,200,200);
+		}
+
+		function setSelectedIconShadow() {
+			iconContext.shadowColor = SHADOW_COLOR;
+			iconContext.shadowOffsetX = -20;
+			iconContext.shadowOffsetY = -20;
+			iconContext.shadowBlur = 25;
+			iconContext.fillStyle = '#ccc';
+			iconContext.fillRect(350,110,200,200);
+		}
+		setIconShadow();
+		setSelectedIconShadow();
+	</script>
+</html>
