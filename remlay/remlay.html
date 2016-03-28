@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		var cssEl = document.createElement('style');
+		document.documentElement.firstElementChild.appendChild(cssEl);
+
+		function setPxPerRem() {
+			var dpr = 1;
+			var pxPerRem = document.documentElement.clientWidth*dpr/10;
+			cssEl.innerHTML = 'html {font-size: '+ pxPerRem +'px!important;}';
+		}
+
+		setPxPerRem();
+	</script>
+</head>
+<body>
+	<header class="doc-top clear">
+		<input class="top-input" type="text" placeholder="搜医生、科室、病症">
+		<a href="javascript:void(0);">取消</a>
+	</header>
+	<main class="doc-main">
+		<section class="doc-list">
+			<h2 class="clear">
+				热门搜索
+			</h2>
+			<section class="list-word clear">
+				<a href="javascript:void(0);">名医</a>
+				<a href="javascript:void(0);">名医</a>
+				<a href="javascript:void(0);">名医</a>
+				<a href="javascript:void(0);">名医</a>
+				<a href="javascript:void(0);">名医</a>
+				<a href="javascript:void(0);">名医</a>
+			</section>
+		</section>
+	</main>
+</body>
+<script type="text/javascript">
+	
+</script>
+</html>
