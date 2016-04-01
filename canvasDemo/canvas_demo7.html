@@ -1,0 +1,199 @@
+<!DOCTYPE>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<style type="text/css">
+			canvas {
+				margin-left: 20px;
+				margin-right: 0;
+				margin-bottom: 20px;
+				border: 1px solid #aaa;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="725" height="440">
+			Canvas not supported
+		</canvas>
+		<div id="contorls">
+			Stroke color:
+			<select id="strokeStyleSelect">
+				<option value="red">red</option>
+				<option value="green">green</option>
+				<option value="blue">blue</option>
+				<option value="orange">orange</option>
+				<option value="cornflowerblue">cornflowerblue</option>
+				<option value="goldenrod">goldenrod</option>
+				<option value="navy">navy</option>
+				<option value="purple">purple</option>
+			</select>
+
+			Guidewires:
+			<input type="checkbox" id="guidewiresBox" checked>
+			<input type="button" id="eraseAllButton" value="Erase all">
+		</div>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas'),
+			context = canvas.getContext('2d'),
+			eraseAllButton = document.getElementById('eraseAllButton'),
+			strokeStyleSelect = document.getElementById('strokeStyleSelect'),
+			guidewiresCheckbox = document.getElementById('guidewiresBox'),
+			drawingSurfaceImageData,
+			mousedown = {},
+			rubberbandRect = {},
+			dragging = false,
+			guiwires = guidewiresCheckbox.checked;
+
+		function drawGrid (color,stepx,stepy) {
+			context.strokeStyle = color;
+			context.lineWidth = 0.5;
+			for (var i = stepx + 0.5; i < context.canvas.width; i+=stepx) {
+				context.beginPath();
+				context.moveTo(i,0);
+				context.lineTo(i,context.canvas.height);
+				context.stroke();
+			}
+
+			for (var j = stepy + 0.5; j < context.canvas.height; j+=stepy) {
+				context.beginPath();
+				context.moveTo(0,j);
+				context.lineTo(context.canvas.width,j);
+				context.stroke();
+			}
+		}
+
+		function windowToCanvas (x,y) {
+			var bbox = canvas.getBoundingClientRect();
+			return {
+				x: x-bbox.left*(canvas.width / bbox.width),
+				y: y-bbox.top*(canvas.height / bbox.height),
+			}
+		}
+
+		function saveDrawingSurface () {
+			drawingSurfaceImageData = context.getImageData(0,0,canvas.width,canvas.height);
+		}
+
+		function restoreDrawingSuface() {
+			context.putImageData(drawingSurfaceImageData,0,0);
+		}
+
+		function updateRubberbandRectangle(loc) {
+			rubberbandRect.width = Math.abs(loc.x-mousedown.x);
+			rubberbandRect.height = Math.abs(loc.y-mousedown.y);
+			if (loc.x > mousedown.x) {
+				rubberbandRect.left = mousedown.x;
+			}else {
+				rubberbandRect.left = loc.x;
+			}
+
+			if (loc.y == mousedown.y) {
+				rubberbandRect.top = mousedown.y;
+			}else {
+				rubberbandRect.top = loc.y;
+			}
+		}
+
+		function drawRubberbandShape(loc) {
+			context.beginPath();
+			context.moveTo(mousedown.x,mousedown.y);
+			context.lineTo(loc.x,loc.y);
+			context.stroke();
+		}
+
+		function updateRubberband(loc) {
+			updateRubberbandRectangle(loc);
+			drawRubberbandShape(loc);
+		}
+
+		function drawHorizontalLine(y) {
+			context.beginPath();
+			context.moveTo(0,y+0.5);
+			context.lineTo(context.canvas.width,y+0.5);
+			context.stroke();
+		}
+
+		function drawVerticaLine(x) {
+			context.beginPath();
+			context.moveTo(x+0.5,0);
+			context.lineTo(x+0.5,context.canvas.height);
+			context.stroke();
+		}
+
+		function drawGuidewries(x,y) {
+			context.save();
+			context.strokeStyle = 'rgba(0,0,230,0.4)';
+			context.lineWidth = 0.5;
+			drawVerticaLine(x);
+			drawHorizontalLine(y);
+			context.restore();
+		}
+
+		canvas.onmousedown = function(e) {
+			var loc = windowToCanvas(e.clientX,e.clientY);
+
+			e.preventDefault();
+			saveDrawingSurface();
+			mousedown.x = loc.x;
+			mousedown.y = loc.y;
+			dragging = true;
+		}
+
+		canvas.onmousemove = function(e) {
+			var loc;
+
+			if (dragging) {
+				e.preventDefault();
+				loc = windowToCanvas(e.clientX,e.clientY);
+				restoreDrawingSuface();
+				updateRubberband(loc);
+
+				if (guiwires) {
+					drawGuidewries(loc.x,loc.y);
+				}
+			}
+		}
+
+		canvas.onmouseup = function(e) {
+			loc = windowToCanvas(e.clientX,e.clientY);
+			restoreDrawingSuface();
+			updateRubberband(loc);
+			dragging = false;
+		}
+
+		eraseAllButton.onclick = function(e){
+			context.clearRect(0,0,canvas.width,canvas.height);
+			drawGrid('lightgray',10,10);
+			saveDrawingSurface();
+		}
+
+		strokeStyleSelect.onchange = function(e) {
+			context.strokeStyle = strokeStyleSelect.value;
+		}
+
+		guidewiresCheckbox.onchange = function(e) {
+			guidewire = guidewiresCheckbox.checked;
+		}
+
+		context.strokeStyle = strokeStyleSelect.value;
+		drawGrid('lightgray',10,10);
+		// function drawHorizontalAxisTicks () {
+		// 	var deltaY;
+
+		// 	for (var i = 1; i <NUM_HORIZONTAL; ++i) {
+		// 		context.beginPath();
+		// 		if (i % 5 == 0) {
+		// 			delatY = TICK_WIDTH ;
+		// 		}else {
+		// 			deltaY = TICK_WIDTH/2;
+		// 		}
+		// 		context.moveTo(AXIS_ORIGIN.x + i*HORIZONTAL_TICK_SPACING,AXIS_ORIGIN.y - deltaY);
+		// 		context.lineTo(AXIS_ORIGIN.x + i*HORIZONTAL_TICK_SPACING,AXIS_ORIGIN.y + deltaY);
+		// 		context.stroke();
+		// 	}
+		// }
+		
+		// drawGrid('lightgray',10,10);
+		// drawAxws();
+	</script>
+</html>
