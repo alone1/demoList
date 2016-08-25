@@ -1,0 +1,311 @@
+<!doctype html>
+<head>
+	<title>甘草医生-互联网中医在线问诊服务平台</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="author" content="甘草医生-http://www.igancao.com" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+		/*不同分辨率手机加载*/
+		(function(doc,win){
+			var docEl = document.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange':'resize',
+				recalc = function(){
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) {return;}
+					docEl.style.fontSize = (clientWidth/10)+'px';
+				}
+				if (!doc.addEventListener) {return;}
+				win.addEventListener(resizeEvt,recalc,false);
+				recalc();
+		})(document,window);
+	</script>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<div class="header clear">
+		<div class="head-nav">
+			<a class="cur" href="javascript:void(0);">概述</a>
+			<a href="javascript:void(0);">经论</a>
+		</div>
+	</div>
+	<div class="main">
+		<div class="section">
+			<h2 class="title">半夏</h2>
+			<h3 class="subtitle">Ban xia</h3>
+			<div class="clear"></div>
+		</div>
+		<div class="section">
+			<h2 class="title">常用别名</h2>
+			<h3 class="subtitle"></h3>
+			<div class="content clear ">
+				<p>三叶半夏、三叶老、三步跳、麻玉果、燕子尾</p>
+			</div>
+		</div>
+		<div class="section">
+			<h2 class="title">相关图片</h2>
+			<div class="content clear ">
+				<div id="imglist">
+					<ul class="clear">
+						<li><img src="img/conten.jpg" data-src="img/1.jpg"></li>
+						<li><img src="img/2.png" data-src="img/2.jpg"></li>
+						<li><img src="img/conten.jpg" data-src="img/3.jpg"></li>
+						<li><img src="img/conten.jpg" data-src="img/4.jpg"></li>
+						<li><img src="img/conten.jpg" data-src="img/5.jpg"></li>
+						<li><img src="img/conten.jpg" data-src="img/6.jpg"></li>
+						<li><img src="img/conten.jpg" data-src="img/7.jpg"></li>
+						<li><img src="img/conten.jpg" data-src="img/8.jpg"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="section">
+			<h2 class="title">性味</h2>
+			<h3 class="subtitle"></h3>
+			<div class="content clear ">
+				<p>辛、温；有毒</p>
+			</div>
+		</div>
+		<div class="section">
+			<h2 class="title">归经</h2>
+			<h3 class="subtitle"></h3>
+			<div class="content clear ">
+				<p>归脾、胃、肺经</p>
+			</div>
+		</div>
+		<div class="section">
+			<h2 class="title">功效</h2>
+			<h3 class="subtitle"></h3>
+			<div class="content clear ">
+				<p>燥湿化痰，降逆止呕，消痞散结。<sup class="asid">注1</sup>用于痰多咳喘，痰饮眩悸，风痰眩晕，痰厥头痛，呕吐反胃，胸脘痞闷，梅核气；生用外治痈肿痰核。姜半夏多用于降逆止呕。</p>
+			</div>
+		</div>
+		<div class="section">
+			<h2 class="title">使用</h2>
+			<h3 class="subtitle"></h3>
+			<div class="content clear ">
+				<p>3～9g。外用适量，磨汁涂或研末以酒调敷患处。</p>
+				<p>热痰烦渴者忌用，生品为国家规定毒性中药管理品种。临床应用时应以半夏炮制品（清半夏姜半夏）入药为宜。<a href="javascript:void(0);">反川乌</a>、<a href="javascript:void(0);">草乌</a>、<a href="javascript:void(0);">附子</a>。</p>
+			</div>
+		</div>
+	</div>
+	<div id="imgalt" class="img-alt"></div>
+	<div id="imgdia">
+		<ul>
+			<li><img src="img/conten.jpg" data-src="img/1.jpg"></li>
+			<li><img src="img/2.png" data-src="img/2.jpg"></li>
+			<li><img src="img/conten.jpg" data-src="img/3.jpg"></li>
+			<li><img src="img/conten.jpg" data-src="img/4.jpg"></li>
+			<li><img src="img/conten.jpg" data-src="img/5.jpg"></li>
+			<li><img src="img/conten.jpg" data-src="img/6.jpg"></li>
+			<li><img src="img/conten.jpg" data-src="img/7.jpg"></li>
+			<li><img src="img/conten.jpg" data-src="img/8.jpg"></li>
+		</ul>
+		<div id="waring">
+			
+		</div>
+	</div>
+	<a id="slide-left" href="javascript:void(0);">
+		<img src="img/prev.png" alt="上一张">
+	</a>
+	<a id="slide-right" href="javascript:void(0);">
+		<img src="img/next.png" alt="下一张">
+	</a>
+</body>
+<script type="text/javascript">
+	window.onload = function() {
+		var imgList = document.getElementById('imglist'),
+			slideLeft = document.getElementById('slide-left'),
+			slideRight = document.getElementById('slide-right'),
+			_len = imgList.getElementsByTagName('li').length,
+			_width = imgList.getElementsByTagName('li')[0].clientWidth+12,
+			imgdia = document.getElementById('imgdia'),
+			_upwidth = imgdia.getElementsByTagName('li')[0].clientWidth,
+			_uplen = imgdia.getElementsByTagName('li').length;
+		imgList.getElementsByTagName('ul')[0].style.width = parseInt(_len*_width) + 'px';
+		imgdia.getElementsByTagName('ul')[0].style.width = parseInt(_uplen*_upwidth) + 'px';
+
+		lazy(imgList);
+		lazy(imgdia);
+
+		for (var i = 0; i < imgList.getElementsByTagName('li').length; i++) {
+			imgIndex(i);
+		}
+
+		slideLeft.addEventListener('click', function(e) {
+			slide(_len,'left');
+		})
+		slideRight.addEventListener('click', function(e) {
+			slide(_len,'right');
+		})
+
+		document.getElementById('imgalt').addEventListener('click', function(){
+			hide();
+		})
+
+		var startPosition, endPosition, deltaX, deltaY, moveLength;
+
+        imgdia.addEventListener('touchstart', function (e) {
+            var touch = e.touches[0];
+            startPosition = {
+                x: touch.pageX,
+                y: touch.pageY
+            }
+            imgdia.style.transition = 'all 0s';
+			imgdia.getElementsByTagName('ul')[0].style.transition = 'all 0s';
+        });
+
+        imgdia.addEventListener('touchmove', function (e) {
+            var touch = e.touches[0];
+            endPosition = {
+                x: touch.pageX,
+                y: touch.pageY
+            }
+
+            deltaX = endPosition.x - startPosition.x;
+            deltaY = endPosition.y - startPosition.y;
+            if (ALL_INDEX != 0 && ALL_INDEX != _len-1) {
+            	imgdia.getElementsByTagName('ul')[0].style.webkitTransform = 'translate3d('+(-ALL_INDEX*_upwidth+deltaX)+'px,0,0)';
+            }
+            
+        });
+
+        imgdia.addEventListener('touchend', function (e) {
+        	imgdia.style.transition = 'all .6s';
+			imgdia.getElementsByTagName('ul')[0].style.transition = 'all .5s';
+        	if (deltaX > 60) {
+        		if (ALL_INDEX == 0) {
+					waring.innerHTML = '这是第一张';
+					waring.style.display = 'block';
+					setTimeout(function() {
+						waring.style.display = 'none';
+					},1500);
+				}else {
+					waring.style.display = 'none';
+					var _height = imgdia.getElementsByTagName('img')[ALL_INDEX-1].clientHeight;
+					imgdia.style.height = _height+'px';
+					imgdia.style.marginTop = -_height/2 + 'px';
+					imgdia.getElementsByTagName('ul')[0].style.webkitTransform = 'translate3d('+(-(ALL_INDEX-1)*_upwidth)+'px,0,0)';
+        			ALL_INDEX--;
+				}
+        	}else if (deltaX < -60) {
+        		if (ALL_INDEX == _len-1) {
+					waring.innerHTML = '这是最后一张';
+					waring.style.display = 'block';
+					setTimeout(function() {
+						waring.style.display = 'none';
+					},1500);
+				}else {
+					waring.style.display = 'none';
+					var _height = imgdia.getElementsByTagName('img')[ALL_INDEX+1].clientHeight;
+					imgdia.style.height = _height+'px';
+					imgdia.style.marginTop = -_height/2 + 'px';
+					imgdia.getElementsByTagName('ul')[0].style.webkitTransform = 'translate3d('+(-(ALL_INDEX+1)*_upwidth)+'px,0,0)';
+        			ALL_INDEX++;
+				}
+        	}else {
+        		imgdia.getElementsByTagName('ul')[0].style.webkitTransform = 'translate3d('+(-ALL_INDEX*_upwidth)+'px,0,0)';
+        	}
+        });
+
+	}
+	var ALL_INDEX = 0;
+	function imgIndex(i) {//绑定每张图片得点击事件
+		var imgList = document.getElementById('imglist'),
+			imgdia = document.getElementById('imgdia');
+		imgList.getElementsByTagName('li')[i].addEventListener('click', function(e) {
+			imgdia.style.transition = 'all .6s';
+			imgdia.getElementsByTagName('ul')[0].style.transition = 'all .5s';
+			show(i);
+			imgdia.style.animationName = 'bounceIn';
+			imgdia.style.animationDuration = '1s';
+		})
+	}
+
+	function show(i){//点击计算图片大小以及弹窗位置
+		ALL_INDEX = i;
+		var imgdia = document.getElementById('imgdia'),
+			imgalt = document.getElementById('imgalt'),
+			_upwidth = imgdia.getElementsByTagName('img')[0].clientWidth,
+			_height = imgdia.getElementsByTagName('img')[i].clientHeight;
+		imgdia.style.height = _height+'px';
+		imgdia.style.marginTop = -_height/2 + 'px';
+		imgdia.getElementsByTagName('ul')[0].style.transform = 'translate3d('+(-i*_upwidth)+'px,0,0)';
+		imgdia.getElementsByTagName('ul')[0].style.webkitTransform = 'translate3d('+(-i*_upwidth)+'px,0,0)';
+		imgalt.style.visibility = 'visible';
+		imgdia.style.visibility = 'visible';
+		// document.getElementById('slide-right').style.display = 'block';
+		// document.getElementById('slide-left').style.display = 'block';
+	}
+
+	function hide(){
+		var imgdia = document.getElementById('imgdia'),
+			imgalt = document.getElementById('imgalt');
+		imgdia.style.transition = 'all 0s';
+		imgdia.getElementsByTagName('ul')[0].style.transition = 'all 0s';
+		imgdia.style.animationName = 'bounceOut';
+		imgdia.style.animationDuration = '1s';
+		setTimeout(function(){
+			imgdia.style.visibility = 'hidden';
+			imgalt.style.visibility = 'hidden';
+		},900);
+		// document.getElementById('slide-right').style.display = 'none';
+		// document.getElementById('slide-left').style.display = 'none';
+	}
+
+	function lazy(el){
+		var _len = el.getElementsByTagName('img').length;
+		for (var i = 0; i < _len; i++) {
+			el.getElementsByTagName('img')[i].src = el.getElementsByTagName('img')[i].getAttribute('data-src');
+		}
+	}
+
+	function Slider(){
+		this.ALL_INDEX = 0;
+		this.imgList = document.getElementById('imglist');
+		this.imgdia = document.getElementById('imgdia');
+		this._upwidth = imgdia.getElementsByTagName('img')[0].clientWidth;
+		this.imgalt = document.getElementById('imgalt');
+		// this._height = imgdia.getElementsByTagName('img')[i].clientHeight;
+	}
+
+	Slider.prototype.show = function(){
+		var _height = imgdia.getElementsByTagName('img')[this.ALL_INDEX].clientHeight;
+		imgdia.style.height = _height+'px';
+		imgdia.style.marginTop = -_height/2 + 'px';
+		imgdia.getElementsByTagName('ul')[0].style.transform = 'translate3d('+(-this.ALL_INDEX*_upwidth)+'px,0,0)';
+		imgdia.getElementsByTagName('ul')[0].style.webkitTransform = 'translate3d('+(-this.ALL_INDEX*_upwidth)+'px,0,0)';
+		imgalt.style.visibility = 'visible';
+		imgdia.style.visibility = 'visible';
+	}
+
+	Slider.prototype.hide = function(){
+		imgdia.style.transition = 'all 0s';
+		imgdia.getElementsByTagName('ul')[0].style.transition = 'all 0s';
+		imgdia.style.animationName = 'bounceOut';
+		imgdia.style.animationDuration = '1s';
+		setTimeout(function(){
+			imgdia.style.visibility = 'hidden';
+			imgalt.style.visibility = 'hidden';
+		},900);
+	}
+
+	Slider.prototype.imgIndex = function(i){
+		imgList.getElementsByTagName('li')[i].addEventListener('click', function(e) {
+			imgdia.style.transition = 'all .6s';
+			imgdia.getElementsByTagName('ul')[0].style.transition = 'all .5s';
+			show(i);
+			imgdia.style.animationName = 'bounceIn';
+			imgdia.style.animationDuration = '1s';
+		})
+	}
+</script>
+</html>
